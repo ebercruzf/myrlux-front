@@ -1,0 +1,63 @@
+<div class="container my-4">
+    <h2>{{ isEditing ? 'Editar' : 'Crear' }} Alumno</h2>
+    
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="validationErrors.length > 0" class="alert alert-warning">
+      <ul>
+        <li *ngFor="let error of validationErrors">{{ error }}</li>
+      </ul>
+    </div>
+  
+    <form (ngSubmit)="onSubmit()" #alumnoForm="ngForm">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="alumno.nombre" required>
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="alumno.apellido" required>
+      </div>
+      <div class="mb-3">
+        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="alumno.fechaNacimiento" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Género</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="generoM" value="M" [(ngModel)]="alumno.genero" required>
+          <label class="form-check-label" for="generoM">Masculino</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="generoF" value="F" [(ngModel)]="alumno.genero" required>
+          <label class="form-check-label" for="generoF">Femenino</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="generoO" value="O" [(ngModel)]="alumno.genero" required>
+          <label class="form-check-label" for="generoO">Otro</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="alumno.direccion" required>
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono" [(ngModel)]="alumno.telefono" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="alumno.email" required>
+      </div>
+      <div class="mb-3">
+        <label for="fechaIngreso" class="form-label">Fecha de Ingreso</label>
+        <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" [(ngModel)]="alumno.fechaIngreso" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!alumnoForm.form.valid">
+        {{ isEditing ? 'Actualizar' : 'Crear' }} Alumno
+      </button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="goBack()">Volver al Inicio</button>
+    </form>
+  </div>
