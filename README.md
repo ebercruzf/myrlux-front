@@ -47,7 +47,7 @@ ng build
 Los archivos de la construcción se almacenarán en el directorio `dist/`.
 
 ## Pruebas
-- Para ejecutar las pruebas unitarias:
+- Para ejecutar las pruebas unitarias (por ahoro no estan implementadas en el front):
   ```
   ng test
   ```
